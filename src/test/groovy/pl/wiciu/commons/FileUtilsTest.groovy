@@ -1,0 +1,84 @@
+package pl.wiciu.commons
+
+import org.apache.commons.io.IOUtils
+import spock.lang.Ignore
+import spock.lang.Specification
+
+import java.nio.charset.StandardCharsets
+
+import static org.assertj.core.api.Assertions.assertThat
+@Ignore
+class FileUtilsGroovyTest extends Specification {
+
+    def "should read file from classpath"() {
+        given:
+            FileUtils utils = new FileUtils()
+
+        when:
+            InputStream stream = utils.loadFileFromClasspath("/test.txt");
+
+        then:
+            stream.available() > 0;
+            assertThat(IOUtils.toString(stream, StandardCharsets.UTF_8)).contains("1","2","3","4","5");
+    }
+
+    def "numbers to the power of two"(int a, int b, int c) {
+        expect:
+        Math.pow(a, b) == c
+
+        where:
+        a | b | c
+        1 | 2 | 1
+        2 | 2 | 4
+        3 | 2 | 9
+    }
+
+
+}
+
+
+/*
+private static final String INPUT_DIR = "/home/pawel/source/data";
+
+    @Test
+    public void shouldReadFileFromClasspath() throws IOException {
+        //given
+        FileUtils utils = new FileUtils();
+
+        //when
+        InputStream stream = utils.loadFileFromClasspath("/test.txt");
+
+
+        //then
+        assertThat(stream.available()).isGreaterThan(0);
+        assertThat(IOUtils.toString(stream, StandardCharsets.UTF_8)).contains("1","2","3","4","5");
+    }
+
+    @Test
+    public void shouldReadFileLinesFromPath() throws IOException {
+        //given
+        FileUtils utils = new FileUtils();
+
+        //when
+        List<String> lines = utils.loadFileByLineFromPath(INPUT_DIR,"test.new");
+
+
+        //then
+        assertThat(lines.size()).isGreaterThan(0);
+        assertThat(lines).contains("a","b","c","d","e");
+    }
+
+
+    @Test
+    public void shouldListFilesFromPath() throws IOException {
+        //given
+        FileUtils utils = new FileUtils();
+
+        //when
+        List<Path> files = utils.listFilesInPath(INPUT_DIR);
+
+
+        //then
+        assertThat(files.get(0).toString()).contains("test.new");
+    }
+ */
