@@ -1,13 +1,12 @@
 package pl.wiciu.commons
 
 import org.apache.commons.io.IOUtils
-import spock.lang.Ignore
 import spock.lang.Specification
 
 import java.nio.charset.StandardCharsets
 
 import static org.assertj.core.api.Assertions.assertThat
-@Ignore
+
 class FileUtilsGroovyTest extends Specification {
 
     def "should read file from classpath"() {

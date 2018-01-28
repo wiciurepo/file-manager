@@ -14,12 +14,12 @@ apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-//apply plugin: 'application'
+apply plugin: 'application'
 //apply plugin: 'war'
 
 sourceCompatibility = 1.8
 
-//mainClassName = "pl.wiciu.FileManagerApp"
+mainClassName = "pl.wiciu.FileManagerApp"
 
 jar {
     baseName = 'file-manager'
@@ -28,6 +28,21 @@ jar {
 
 repositories {
     mavenCentral()
+}
+
+
+startScripts {
+    classpath += files('src/dist/conf','src/main/resources/conf','src/dist/lib/external')
+}
+
+applicationDistribution.from("src/main/resources/conf") {
+    into "conf"
+}
+
+
+def isDevelopmentEnv() {
+    def env = System.properties['spring.profiles.active'] ?: 'DEV'
+    env == 'DEV'
 }
 
 dependencies {

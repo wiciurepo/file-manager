@@ -1,6 +1,7 @@
 package pl.wiciu.commons;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import pl.wiciu.services.ServiceForSTub;
@@ -20,8 +21,13 @@ public class WatcherService {
     @Autowired
     ServiceForSTub serviceForSTub;
 
+    @Value("${spring.profiles.active}")
+    private String activeProfile;
+
     @Async("asyncTaskPoolExecutor")
     public void scanForFiles() throws IOException {
+
+        System.out.println("Active profile:" + activeProfile);
 
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir = Paths.get("/home/pawel/source/data");
