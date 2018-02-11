@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "in execute"
+echo $test_opt
