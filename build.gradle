@@ -1,3 +1,5 @@
+import java.util.stream.Collectors
+
 buildscript {
     repositories {
         mavenCentral()
@@ -33,6 +35,31 @@ repositories {
 
 startScripts {
     classpath += files('src/dist/conf','src/main/resources/conf','src/dist/lib/external')
+    doLast {
+
+        // Alter the start script for Unix systems.
+        unixScript.text =
+                unixScript
+                        .readLines()
+                        .stream()
+                        .map({ line->
+                    if(line.startsWith("# Determine the Java")) {
+                        line = "JAVA_HOME=/some/path"
+                    }
+                    line
+
+                })
+                        .map({ line->
+                    if(line.startsWith("# Attempt to set APP_HOME")) {
+                        line = line + " TURU"
+                    }
+                    line
+
+                })
+                        .collect(Collectors.toList())
+                        .join('\n')
+
+    }
 }
 
 applicationDistribution.from("src/main/resources/conf") {

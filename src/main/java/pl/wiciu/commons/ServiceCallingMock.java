@@ -4,6 +4,8 @@ public class ServiceCallingMock {
 
     MockProvider.MockProviderBuilder providerBuilder = MockProvider.builder();
 
+    ContextForTest contextForTest = ContextProvider.getContextForTest();
+
     void callMock() {
         System.out.println("provider called");
         MockProvider mockProvider = providerBuilder.build();

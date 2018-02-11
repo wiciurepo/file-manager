@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.concurrent.BlockingDeque;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,6 +22,7 @@ public class FileUtilsTest {
     public void shouldReadFileFromClasspath() throws IOException {
         //given
         FileUtils utils = new FileUtils();
+        BlockingDeque<String> deque;
 
         //when
         InputStream stream = utils.loadFileFromClasspath("/test.txt");
