@@ -1,6 +1,7 @@
-package pl.wiciu;
+package pl.wiciu.customer;
 
 import org.springframework.data.repository.CrudRepository;
+import pl.wiciu.customer.Customer;
 
 import java.util.List;
 

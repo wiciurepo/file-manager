@@ -3,7 +3,7 @@ package pl.wiciu.services.database
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.jdbc.core.JdbcTemplate
-import pl.wiciu.CustomerRepository
+import pl.wiciu.customer.CustomerRepository
 import spock.lang.Specification
 
 import javax.sql.DataSource

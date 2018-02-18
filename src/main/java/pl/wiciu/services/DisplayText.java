@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 public class DisplayText {
 
-    @Value("${display.text}")
-    String displayText;
+    //@Value("${display.text}")
+    //String displayText;
 
     @Value("${external.text}")
     String externalText;
@@ -29,7 +29,7 @@ public class DisplayText {
 
         //throw new Error("error - abort execution");
 
-        System.out.println("TADA:" + displayText);
+      //  System.out.println("TADA:" + displayText);
         System.out.println("TADA external:" + externalText);
         System.out.println("TADA additional external:" + additionalExternalText);
         System.out.println("TADA external path:" + externalPathText);

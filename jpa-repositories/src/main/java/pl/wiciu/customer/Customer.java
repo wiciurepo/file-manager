@@ -1,4 +1,4 @@
-package pl.wiciu;
+package pl.wiciu.customer;
 
 
 
